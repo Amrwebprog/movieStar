@@ -6,8 +6,10 @@ import {
   Typography,
   useTheme,
 } from '@mui/material'
-import { useState } from 'react'
+import Aos from 'aos'
+import { useEffect, useState } from 'react'
 import appleTV from '../assets/appleTV.svg'
+import LaptopDevice from '../assets/device-laptop.c43f488.png'
 import tap from '../assets/device-tablet-phone.978a2cf.png'
 import movieTv from '../assets/device-tv.df3fcfc.png'
 import img from '../assets/Devices-Background-Gradient.46aa1c5.jpg'
@@ -25,21 +27,24 @@ export default function ResponseSection() {
   const [showDesktop, setShowDesktop] = useState(false)
 
   const ToggleTv = () => {
-    setShowTv(!showTv)
+    setShowTv(true)
     setShowMobil(false)
     setShowDesktop(false)
   }
   const ToggleMobile = () => {
-    setShowMobil(!showMobil)
+    setShowMobil(true)
     setShowTv(false)
     setShowDesktop(false)
   }
   const ToggleDesktop = () => {
-    setShowDesktop(!showDesktop)
+    setShowDesktop(true)
     setShowTv(false)
     setShowMobil(false)
   }
   const theme = useTheme()
+  useEffect(() => {
+    Aos.init({})
+  }, [])
   return (
     <>
       <Box
@@ -59,7 +64,7 @@ export default function ResponseSection() {
               display: 'flex',
               justifyContent: 'center',
               alignItems: 'center',
-              padding: '30px',
+              padding: '20px',
               flexDirection: 'column',
             }}
           >
@@ -91,10 +96,11 @@ export default function ResponseSection() {
                   textAlign: 'center',
                   width: '65%',
                 }}
+                data-aos="fade-up"
               >
                 Watch on all your favorite devices,{' '}
-                <span style={{ color: '#0056b3' }}>any time</span> ,
-                <span style={{ color: '#28a745' }}>anywhere</span>
+                <span style={{ color: '#FFCFB3' }}>any time</span> ,
+                <span style={{ color: '#E78F81' }}>anywhere</span>
               </Typography>
               <Box
                 sx={{
@@ -103,6 +109,7 @@ export default function ResponseSection() {
                   justifyContent: 'center',
                   gap: { xs: '20px', sm: '50px', lg: '350px' },
                 }}
+                data-aos="fade-up"
               >
                 <Button
                   variant="contained"
@@ -186,7 +193,7 @@ export default function ResponseSection() {
                 {showTv && (
                   <>
                     <Box
-                      className="animate__fadeIn animate__animated  animate__slower"
+                      data-aos="fade-up"
                       sx={{
                         display: 'flex',
                         flexDirection: 'column',
@@ -200,45 +207,40 @@ export default function ResponseSection() {
                         Enjoy on your TV
                       </Typography>
                       <Box sx={{ width: '65%', height: 'auto' }}>
-                        <img src={movieTv} className="col-12" alt="" />
+                        <img src={movieTv} className="col-12 " alt="" />
                       </Box>
                     </Box>
-                    <Box>
-                      <Grid2 container spacing={2}>
-                        <Grid2
-                          size={{ xs: 6, md: 2, lg: 2 }}
-                          sx={{ marginTop: '20px' }}
-                        >
+                    <Box
+                      sx={{
+                        background: '#00000036',
+                        padding: '25px',
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                      }}
+                    >
+                      <Grid2
+                        container
+                        spacing={2}
+                        sx={{ width: '100%' }}
+                        data-aos="fade-up"
+                      >
+                        <Grid2 size={{ xs: 6, md: 2, lg: 2 }}>
                           <img width="40px" src={appleTV} alt="" />
                         </Grid2>
-                        <Grid2
-                          size={{ xs: 6, md: 2, lg: 2 }}
-                          sx={{ marginTop: '20px' }}
-                        >
+                        <Grid2 size={{ xs: 6, md: 2, lg: 2 }}>
                           <img src={roku} alt="" width="40px" />
                         </Grid2>
-                        <Grid2
-                          size={{ xs: 6, md: 2, lg: 2 }}
-                          sx={{ marginTop: '20px' }}
-                        >
+                        <Grid2 size={{ xs: 6, md: 2, lg: 2 }}>
                           <img src={Chrom} width="140px" />
                         </Grid2>
-                        <Grid2
-                          size={{ xs: 6, md: 2, lg: 2 }}
-                          sx={{ marginTop: '20px' }}
-                        >
+                        <Grid2 size={{ xs: 6, md: 2, lg: 2 }}>
                           <img src={AndroidTv} alt="" width="40px" />
                         </Grid2>
-                        <Grid2
-                          size={{ xs: 6, md: 2, lg: 2 }}
-                          sx={{ marginTop: '20px' }}
-                        >
+                        <Grid2 size={{ xs: 6, md: 2, lg: 2 }}>
                           <img src={FireTv} alt="" width="40px" />
                         </Grid2>
-                        <Grid2
-                          size={{ xs: 6, md: 2, lg: 2 }}
-                          sx={{ marginTop: '20px' }}
-                        >
+                        <Grid2 size={{ xs: 6, md: 2, lg: 2 }}>
                           <img src={sammsung} alt="" width="40px" />
                         </Grid2>
                       </Grid2>
@@ -259,54 +261,132 @@ export default function ResponseSection() {
                         variant="h1"
                         sx={{ color: theme.palette.text.primary }}
                       >
-                        Enjoy on your TV
+                        Enjoy on your Mobile , Tablet
                       </Typography>
                       <Box sx={{ width: '65%', height: 'auto' }}>
                         <img src={tap} className="col-12" alt="" />
                       </Box>
                     </Box>
-                    <Box>
-                      <Grid2 container spacing={2}>
-                        <Grid2
-                          size={{ xs: 6, md: 2, lg: 2 }}
-                          sx={{ marginTop: '20px' }}
-                        >
+                    <Box
+                      sx={{
+                        background: '#00000036',
+                        padding: '25px',
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                      }}
+                    >
+                      <Grid2
+                        container
+                        spacing={2}
+                        sx={{ width: '100%' }}
+                        data-aos="fade-up"
+                      >
+                        <Grid2 size={{ xs: 6, md: 2, lg: 2 }}>
                           <img width="40px" src={appleTV} alt="" />
                         </Grid2>
-                        <Grid2
-                          size={{ xs: 6, md: 2, lg: 2 }}
-                          sx={{ marginTop: '20px' }}
-                        >
+                        <Grid2 size={{ xs: 6, md: 2, lg: 2 }}>
                           <img src={roku} alt="" width="40px" />
                         </Grid2>
-                        <Grid2
-                          size={{ xs: 6, md: 2, lg: 2 }}
-                          sx={{ marginTop: '20px' }}
-                        >
+                        <Grid2 size={{ xs: 6, md: 2, lg: 2 }}>
                           <img src={Chrom} width="140px" />
                         </Grid2>
-                        <Grid2
-                          size={{ xs: 6, md: 2, lg: 2 }}
-                          sx={{ marginTop: '20px' }}
-                        >
+                        <Grid2 size={{ xs: 6, md: 2, lg: 2 }}>
                           <img src={AndroidTv} alt="" width="40px" />
                         </Grid2>
-                        <Grid2
-                          size={{ xs: 6, md: 2, lg: 2 }}
-                          sx={{ marginTop: '20px' }}
-                        >
+                        <Grid2 size={{ xs: 6, md: 2, lg: 2 }}>
                           <img src={FireTv} alt="" width="40px" />
                         </Grid2>
-                        <Grid2
-                          size={{ xs: 6, md: 2, lg: 2 }}
-                          sx={{ marginTop: '20px' }}
-                        >
+                        <Grid2 size={{ xs: 6, md: 2, lg: 2 }}>
                           <img src={sammsung} alt="" width="40px" />
                         </Grid2>
                       </Grid2>
                     </Box>
                   </>
                 )}
+                {showDesktop && (
+                  <>
+                    <Box
+                      className="animate__fadeIn animate__animated  animate__slower"
+                      sx={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                      }}
+                    >
+                      <Typography
+                        variant="h1"
+                        sx={{ color: theme.palette.text.primary }}
+                      >
+                        Enjoy on your Laptop && Desktop
+                      </Typography>
+                      <Box sx={{ width: '65%', height: 'auto' }}>
+                        <img src={LaptopDevice} className="col-12" alt="" />
+                      </Box>
+                    </Box>
+                    <Box
+                      sx={{
+                        background: '#00000036',
+                        padding: '25px',
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                      }}
+                    >
+                      <Grid2
+                        container
+                        spacing={2}
+                        sx={{ width: '100%' }}
+                        data-aos="fade-up"
+                      >
+                        <Grid2 size={{ xs: 6, md: 2, lg: 2 }}>
+                          <img width="40px" src={appleTV} alt="" />
+                        </Grid2>
+                        <Grid2 size={{ xs: 6, md: 2, lg: 2 }}>
+                          <img src={roku} alt="" width="40px" />
+                        </Grid2>
+                        <Grid2 size={{ xs: 6, md: 2, lg: 2 }}>
+                          <img src={Chrom} width="140px" />
+                        </Grid2>
+                        <Grid2 size={{ xs: 6, md: 2, lg: 2 }}>
+                          <img src={AndroidTv} alt="" width="40px" />
+                        </Grid2>
+                        <Grid2 size={{ xs: 6, md: 2, lg: 2 }}>
+                          <img src={FireTv} alt="" width="40px" />
+                        </Grid2>
+                        <Grid2 size={{ xs: 6, md: 2, lg: 2 }}>
+                          <img src={sammsung} alt="" width="40px" />
+                        </Grid2>
+                      </Grid2>
+                    </Box>
+                  </>
+                )}
+              </Box>
+              <Box
+                sx={{
+                  marginTop: '45px',
+                  width: '100%',
+                  height: '2px',
+                  background: theme.palette.text.primary,
+                  display: 'flex',
+                }}
+              ></Box>
+              <Box data-aos="fade-up">
+                <Typography variant="h2">
+                  Start watching the latest movies any time, anywhere
+                </Typography>
+                <Button
+                  sx={{
+                    marginTop: '30px',
+                    background: theme.palette.custom.contentBG,
+                    width: '200px',
+                  }}
+                  variant="contained"
+                  color="black"
+                  size="large"
+                >
+                  Get Start
+                </Button>
               </Box>
             </Box>
           </Box>
