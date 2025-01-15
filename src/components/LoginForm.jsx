@@ -76,14 +76,26 @@ export default function LoginForm() {
         console.log(res)
 
         if (res.status === 200) {
-          const { token, username } = res.data.data
+          const { token, username, country_id, email, id, phone, image, role } =
+            res.data.data
 
           setCookie('authToken', token, { path: '/', maxAge: 7 * 24 * 60 * 60 })
           setCookie('username', username, {
             path: '/',
             maxAge: 7 * 24 * 60 * 60,
           })
-
+          setCookie('CountryId', country_id, {
+            path: '/',
+            maxAge: 7 * 24 * 60 * 60,
+          })
+          setCookie('email', email, { path: '/', maxAge: 7 * 24 * 60 * 60 })
+          setCookie('UserId', id, { path: '/', maxAge: 7 * 24 * 60 * 60 })
+          setCookie('userPhoneNumber', phone, {
+            path: '/',
+            maxAge: 7 * 24 * 60 * 60,
+          })
+          setCookie('userImage', image, { path: '/', maxAge: 7 * 24 * 60 * 60 })
+          setCookie('userRole', role, { path: '/', maxAge: 7 * 24 * 60 * 60 })
           console.log('Cookies set successfully!')
         }
       })

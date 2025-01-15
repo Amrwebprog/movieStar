@@ -13,6 +13,14 @@ const GlobalProvider = ({ children }) => {
   const [Genere, setGenere] = useState(false)
   const [GenreData, setGenreData] = useState([])
   const [newMovies, setNewMovies] = useState()
+  const [allNumber, setAllNumber] = useState({
+    userNumber: 0,
+    FilmNumber: 0,
+    SeriesNumber: 0,
+    MatchNumber: 0,
+  })
+  const [allSupscriptions, setAllSupscriptions] = useState([])
+  const [SupcriptionUser, setSupscriptionUser] = useState([])
   return (
     <GlobalContext.Provider
       value={{
@@ -36,6 +44,12 @@ const GlobalProvider = ({ children }) => {
         setGenreData,
         newMovies,
         setNewMovies,
+        allNumber,
+        setAllNumber,
+        SupcriptionUser,
+        setSupscriptionUser,
+        allSupscriptions,
+        setAllSupscriptions,
       }}
     >
       {children}

@@ -7,6 +7,7 @@ import { GlobalContext } from './components/GlobalContext'
 import AboutUsPage from './pages/AboutPage'
 import CategoryPage from './pages/CategoryPage'
 import ContactUsPage from './pages/contactuspage'
+import DashBoardPage from './pages/DashBoardPage'
 import Error from './pages/ErorePage'
 import Homepage from './pages/homepage'
 import LoginPage from './pages/LoginPage'
@@ -19,6 +20,7 @@ import PlanPage from './pages/PlanePage'
 import ProductPage from './pages/ProductPage'
 import ResetPasswordPage from './pages/ResetPasswordPage'
 import SeriesPage from './pages/SeriesPage'
+import SettingsPage from './pages/settingsPage'
 
 function App() {
   const { mode, setMode } = useContext(GlobalContext)
@@ -124,7 +126,9 @@ function App() {
             <Route path="/Movies" element={<MoviesPage />} />
             <Route path="/Seriess" element={<SeriesPage />} />
             <Route path="/Matches" element={<MatchesPage />} />
-            <Route path="/errorPage" element={<Error />} />0
+            <Route path="/errorPage" element={<Error />} />
+            <Route path="/accountSettings" element={<SettingsPage />} />
+            <Route path="/DashBoard" element={<DashBoardPage />} />
             <Route
               path="/NewPassword/http://movie-star.test/api/Auth/:url"
               element={<NewPassword />}

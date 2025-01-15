@@ -1,3 +1,4 @@
+import { Close } from '@mui/icons-material'
 import { Box, Button, Grid, Paper, Typography } from '@mui/material'
 import axios from 'axios'
 import { gsap } from 'gsap'
@@ -7,10 +8,95 @@ import { useParams } from 'react-router-dom'
 import Navbar3 from './NavBar3'
 
 export default function ShowMovie() {
+  const [BoxMovies, setBoxMovies] = useState()
   const { ProductType, ProductId } = useParams()
   const [cookies] = useCookies(['authToken', 'username'])
   const [movieData, setMovieData] = useState(null)
-
+  const HandleShowMovie = (MovieData) => {
+    const MovieBox = () => {
+      return (
+        <Box
+          sx={{
+            top: '0',
+            left: '0',
+            height: '100vh',
+            width: '100vw',
+            position: 'fixed',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            bgcolor: 'rgba(0, 0, 0, 0.8)', // خلفية شفافة داكنة
+            zIndex: '1',
+          }}
+          onClick={() => {
+            setBoxMovies(null)
+          }}
+        >
+          <Paper
+            className="animate__animated animate__backInUp"
+            onClick={(event) => {
+              event.stopPropagation()
+            }}
+            variant="outlined"
+            sx={{
+              position: 'relative',
+              width: '70%',
+              height: '70%',
+              margin: 'auto',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              padding: '20px',
+              flexDirection: 'column',
+              gap: '20px',
+              bgcolor: '#121212', // خلفية الورقة داكنة
+              borderRadius: '16px',
+              boxShadow: '0px 10px 30px rgba(0, 0, 0, 0.5)', // تأثير الظل
+            }}
+          >
+            <Close
+              sx={{
+                position: 'absolute',
+                top: '10px',
+                right: '10px',
+                cursor: 'pointer',
+              }}
+              onClick={() => {
+                setBoxMovies(null)
+              }}
+            />
+            <Typography
+              variant="h4"
+              sx={{
+                color: '#ffffff',
+                textAlign: 'center',
+                marginBottom: '10px',
+              }}
+            >
+              Movie {MovieData.name}
+            </Typography>
+            <Box
+              component="video"
+              controls
+              src={
+                'https://videos.pexels.com/video-files/2435906/2435906-hd_1920_1080_25fps.mp4'
+              }
+              sx={{
+                width: '100%',
+                height: '100%',
+                maxHeight: '400px',
+                borderRadius: '12px',
+                boxShadow: '0px 5px 20px rgba(0, 0, 0, 0.3)',
+                background: '#000',
+              }}
+            />
+            <Typography variant="body1">{MovieData.description}</Typography>
+          </Paper>
+        </Box>
+      )
+    }
+    setBoxMovies(MovieBox)
+  }
   // Refs for animations
   const containerRef = useRef(null)
 
@@ -49,6 +135,7 @@ export default function ShowMovie() {
 
   return (
     <>
+      {BoxMovies}
       <Navbar3 />
       <Box
         sx={{
@@ -66,8 +153,8 @@ export default function ShowMovie() {
               {/* Movie Poster */}
               <Box
                 component="img"
-                src={movieData.posterUrl || defaultImage} // Use default image if posterUrl is not available
-                alt={movieData.title || 'No title available'}
+                src={movieData.image || defaultImage} // Use default image if posterUrl is not available
+                alt={movieData.name || 'No title available'}
                 sx={{
                   width: '50%',
                   height: 'auto',
@@ -77,7 +164,7 @@ export default function ShowMovie() {
               {/* Movie Info */}
               <Box sx={{ flex: 1 }}>
                 <Typography variant="h4" gutterBottom>
-                  {movieData.title || 'Unknown Title'}
+                  {movieData.name || 'Unknown Title'}
                 </Typography>
                 <Typography variant="body2" sx={{ mt: 2, mb: 2 }}>
                   {movieData.description || 'No description available.'}
@@ -92,7 +179,9 @@ export default function ShowMovie() {
                   variant="contained"
                   color="primary"
                   fullWidth
-                  href={movieData.film_url || '#'}
+                  onClick={() => {
+                    HandleShowMovie(movieData)
+                  }}
                   disabled={!movieData.film_url}
                 >
                   {movieData.film_url ? 'Watch Now' : 'No Watch Link Available'}
