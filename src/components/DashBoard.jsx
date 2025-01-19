@@ -27,7 +27,7 @@ export default function DashBoard() {
           <Grid item xs={12} md={6}>
             <SupscriptionDetailsChart />
           </Grid>
-          <Grid item xs={12} md={6} sx={{ overflow: 'hidden' }}>
+          <Grid item xs={12} md={6}>
             <TotalInCome />
           </Grid>
         </Grid>

@@ -3,7 +3,6 @@ import { Box, Paper, Typography } from '@mui/material'
 import React from 'react'
 
 export default function SwiperHeader({ Type, Needs }) {
-  // تحديد النص الذي سيظهر في العنوان بناءً على الشروط
   const getTitle = () => {
     if (Needs?.genre && Type === 'Movies') {
       return `Movies: ${Needs.genre}`

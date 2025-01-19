@@ -119,7 +119,7 @@ export default function PlanContent() {
                 backgroundColor:
                   selectedCard === plan.id
                     ? theme.palette.custom.FoucsOverlay
-                    : null, // Default color
+                    : null,
                 transform:
                   selectedCard === plan.id ? 'scale(1.05)' : 'scale(1)',
                 transition: 'transform 1s, background-color 1s',

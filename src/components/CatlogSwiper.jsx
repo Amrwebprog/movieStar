@@ -155,7 +155,7 @@ const CatlogSwiper = () => {
                         width: '100%',
                         height: '100%',
                         borderRadius: '10px',
-                        boxShadow: '0 4px 8px rgba(0, 0, 0, 0.3)', // تحسين الظل
+                        boxShadow: '0 4px 8px rgba(0, 0, 0, 0.3)',
                         transition:
                           'transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out',
                       }}

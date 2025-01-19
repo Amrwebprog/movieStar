@@ -29,7 +29,7 @@ import useLoader from './CustomHook'
 
 const data = [
   {
-    img: 'https://via.placeholder.com/300x400', // ضع رابط الصورة هنا
+    img: 'https://via.placeholder.com/300x400',
     name: 'The Movie',
     type: 'فيلم',
     top10: true,
@@ -124,7 +124,6 @@ const data = [
     quality: '720p',
     story: 'A comedy series with lots of twists.',
   },
-  // أضف المزيد من العناصر هنا
 ]
 
 export default function HeroSection2(props) {
@@ -238,33 +237,32 @@ export default function HeroSection2(props) {
                   ]}
                   navigation
                   pagination={{ clickable: true }}
-                  spaceBetween={30} // المسافة بين الشرائح
-                  slidesPerView={3} // عرض 3 شرائح كإعداد افتراضي
-                  slidesPerGroup={1} // انتقال بشريحة واحدة
-                  loop={true} // تكرار الشرائح
-                  centeredSlides={true} // توسيط الشرائح
-                  autoHeight={true} // ارتفاع تلقائي للشرائح
-                  grabCursor={true} // جعل السحب ممكنًا مع المؤشر
-                  effect="coverflow" // تأثير coverflow ثلاثي الأبعاد
+                  spaceBetween={30}
+                  slidesPerView={3}
+                  slidesPerGroup={1}
+                  loop={true}
+                  centeredSlides={true}
+                  autoHeight={true}
+                  grabCursor={true}
+                  effect="coverflow"
                   coverflowEffect={{
-                    rotate: 50, // زاوية الدوران
-                    depth: 400, // العمق بين الشرائح
-                    modifier: 1, // تعديل التأثير
-                    slideShadows: true, // الظلال بين الشرائح
+                    rotate: 50,
+                    depth: 400,
+                    modifier: 1,
+                    slideShadows: true,
                   }}
                   breakpoints={{
-                    // إعدادات الشرائح بناءً على حجم الشاشة
                     0: {
-                      slidesPerView: 1, // عرض شريحة واحدة على الهواتف
-                      spaceBetween: 10, // مسافة صغيرة بين الشرائح
+                      slidesPerView: 1,
+                      spaceBetween: 10,
                     },
                     600: {
-                      slidesPerView: 2, // عرض شريحتين على الشاشات المتوسطة
-                      spaceBetween: 20, // مسافة متوسطة بين الشرائح
+                      slidesPerView: 2,
+                      spaceBetween: 20,
                     },
                     960: {
-                      slidesPerView: 3, // عرض 3 شرائح على الشاشات الأكبر
-                      spaceBetween: 30, // مسافة أكبر بين الشرائح
+                      slidesPerView: 3,
+                      spaceBetween: 30,
                     },
                   }}
                   style={{ width: '100%' }}
@@ -278,7 +276,7 @@ export default function HeroSection2(props) {
                     >
                       <Card
                         sx={{
-                          maxWidth: '100%', // عرض الكارت ليكون متجاوبًا
+                          maxWidth: '100%',
                           mx: 'auto',
                         }}
                       >
@@ -287,7 +285,7 @@ export default function HeroSection2(props) {
                           image={item.image}
                           alt={item.name}
                           sx={{
-                            height: { xs: '150px', md: '300px' }, // ضبط ارتفاع الصورة بناءً على الشاشة
+                            height: { xs: '150px', md: '300px' },
                           }}
                         />
                         <CardContent>

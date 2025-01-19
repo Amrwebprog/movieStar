@@ -3,7 +3,7 @@ import { Box, Button, Grid, TextField } from '@mui/material'
 import React, { useState } from 'react'
 
 export default function UserSettings({ profileData }) {
-  const [formData, setFormData] = useState({ ...profileData, password: '' }) // Added password field
+  const [formData, setFormData] = useState({ ...profileData, password: '' })
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
@@ -11,7 +11,6 @@ export default function UserSettings({ profileData }) {
 
   const handleSubmit = () => {
     console.log('Updated User Data:', formData)
-    // Add API call here
   }
 
   return (

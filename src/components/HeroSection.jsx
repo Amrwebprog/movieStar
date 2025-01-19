@@ -100,8 +100,8 @@ const HeroSection = () => {
                   width: '100%',
                   height: '100%',
 
-                  borderRadius: '10px', // تحسين الحواف
-                  boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)', // إضافة ظل خفيف
+                  borderRadius: '10px',
+                  boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
                 }}
               />
               <Box
@@ -112,7 +112,7 @@ const HeroSection = () => {
                   flexDirection: 'column',
                   padding: '20px',
                   position: 'relative',
-                  zIndex: 2, // رفع النص فوق الصورة
+                  zIndex: 2,
                   color: 'white',
                 }}
               >

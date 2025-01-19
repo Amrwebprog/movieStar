@@ -12,7 +12,7 @@ import {
   Typography,
 } from '@mui/material'
 import axios from 'axios'
-import dayjs from 'dayjs' // مكتبة dayjs لحساب الفرق بين التواريخ
+import dayjs from 'dayjs'
 import React, { useContext, useEffect, useState } from 'react'
 import Swal from 'sweetalert2'
 import { GlobalContext } from './GlobalContext'
@@ -25,7 +25,7 @@ export default function RegisterForm() {
     email: '',
     username: '',
     phone: '',
-    age: '', // سيتم تخزين العمر هنا
+    age: '',
     country: '',
     password: '',
     password_confirmation: '',
@@ -256,7 +256,7 @@ export default function RegisterForm() {
             InputLabelProps={{
               shrink: true,
             }}
-            value={formData.age ? dayjs(formData.age).format('YYYY-MM-DD') : ''} // تحويل التاريخ إلى تنسيق مناسب
+            value={formData.age ? dayjs(formData.age).format('YYYY-MM-DD') : ''}
             onChange={handleChange}
           />
           <FormControl sx={{ m: 1, width: '100%' }}>

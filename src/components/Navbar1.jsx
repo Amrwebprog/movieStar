@@ -86,7 +86,6 @@ export default function Navbar1(props) {
     </Box>
   )
 
-  // تحديد container بناءً على وجود window
   const container =
     window !== undefined ? () => window.document.body : undefined
   useEffect(() => {

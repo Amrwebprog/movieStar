@@ -16,14 +16,14 @@ export default function ShowSeries() {
   const [movieData, setMovieData] = useState(null)
   const [episode, setEpisode] = useState([])
   const [showMyVideo, setShowMyVideo] = useState(false)
-  const [currentEpisode, setCurrentEpisode] = useState(null) // حالة لتخزين بيانات الحلقة الحالية
+  const [currentEpisode, setCurrentEpisode] = useState(null)
   const [seasons, setSeasons] = useState([])
   const containerRef = useRef(null)
   const theme = useTheme()
 
   const handleShowSeries = (element) => {
-    setCurrentEpisode(element) // تخزين بيانات الحلقة الحالية
-    setShowMyVideo(true) // إظهار الفيديو
+    setCurrentEpisode(element)
+    setShowMyVideo(true)
   }
 
   const GetEposides = (SeasonId) => {
@@ -61,7 +61,7 @@ export default function ShowSeries() {
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
-          bgcolor: 'rgba(0, 0, 0, 0.8)', // خلفية شفافة داكنة
+          bgcolor: 'rgba(0, 0, 0, 0.8)',
           zIndex: '1',
         }}
         onClick={() => {
@@ -89,9 +89,9 @@ export default function ShowSeries() {
             padding: '20px',
             flexDirection: 'column',
             gap: '20px',
-            bgcolor: '#121212', // خلفية الورقة داكنة
+            bgcolor: '#121212',
             borderRadius: '16px',
-            boxShadow: '0px 10px 30px rgba(0, 0, 0, 0.5)', // تأثير الظل
+            boxShadow: '0px 10px 30px rgba(0, 0, 0, 0.5)',
           }}
         >
           <Close
@@ -152,8 +152,8 @@ export default function ShowSeries() {
     if (containerRef.current && movieData) {
       const elements = Array.from(containerRef.current.children)
       elements.forEach((el) => {
-        el.style.opacity = 0 // Hide elements initially
-        el.style.transform = 'translateY(50px)' // Start with offset for animation
+        el.style.opacity = 0
+        el.style.transform = 'translateY(50px)'
       })
 
       const timeline = gsap.timeline({

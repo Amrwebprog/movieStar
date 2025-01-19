@@ -97,7 +97,6 @@ export default function SwiperFillter({ Type, Needs }) {
           genre: el.genre,
         }))
 
-        // تصفية التكرارات باستخدام Map
         const uniqueMovieGenres = Array.from(
           new Map(movieGenres.map((item) => [item.genre.genre, item])).values()
         )
@@ -130,7 +129,6 @@ export default function SwiperFillter({ Type, Needs }) {
           genre: el.genre,
         }))
 
-        // تصفية التكرارات باستخدام Map
         const uniqueSeriesGenres = Array.from(
           new Map(seriesGenres.map((item) => [item.genre.genre, item])).values()
         )
@@ -173,32 +171,29 @@ export default function SwiperFillter({ Type, Needs }) {
         })
         .then((res) => {
           if (res.data && typeof res.data.data === 'object') {
-            const MyArray = Object.values(res.data.data) // تحويل الكائن إلى مصفوفة
-            console.log('Fetched Data:', MyArray) // طباعة البيانات المستلمة
+            const MyArray = Object.values(res.data.data)
+            console.log('Fetched Data:', MyArray)
 
-            // إنشاء كائن جديد لتجميع البيانات حسب genre
             const newGroupedData = MyArray.reduce((acc, item) => {
-              const genreName = item.genre.genre // اسم النوع
+              const genreName = item.genre.genre
               if (!acc[genreName]) {
-                acc[genreName] = [] // إذا لم يكن النوع موجودًا، قم بإنشائه
+                acc[genreName] = []
               }
-              acc[genreName].push(item) // أضف العنصر إلى النوع المناسب
+              acc[genreName].push(item)
               return acc
             }, {})
 
-            console.log('New Grouped Data:', newGroupedData) // طباعة البيانات المجموعة الجديدة
+            console.log('New Grouped Data:', newGroupedData)
 
-            // دمج القيم الجديدة مع القيم القديمة
             setGenreData((prevData) => {
-              console.log('Previous GenreData:', prevData) // طباعة البيانات القديمة قبل التحديث
+              console.log('Previous GenreData:', prevData)
               const mergedData = { ...prevData }
 
-              // دمج الأنواع الجديدة
               Object.keys(newGroupedData).forEach((genre) => {
                 if (!mergedData[genre]) {
-                  mergedData[genre] = [] // إذا لم يكن النوع موجودًا، قم بإنشائه
+                  mergedData[genre] = []
                 }
-                // دمج العناصر الجديدة مع العناصر القديمة مع إزالة التكرارات
+
                 const existingIds = new Set(
                   mergedData[genre].map((item) => item.id)
                 )
@@ -208,7 +203,7 @@ export default function SwiperFillter({ Type, Needs }) {
                 mergedData[genre] = [...mergedData[genre], ...uniqueItems]
               })
 
-              console.log('Updated GenreData:', mergedData) // طباعة البيانات المدمجة الجديدة
+              console.log('Updated GenreData:', mergedData)
               return mergedData
             })
           } else {
@@ -231,32 +226,29 @@ export default function SwiperFillter({ Type, Needs }) {
         })
         .then((res) => {
           if (res.data && typeof res.data.data === 'object') {
-            const MyArray = Object.values(res.data.data) // تحويل الكائن إلى مصفوفة
-            console.log('Fetched Data:', MyArray) // طباعة البيانات المستلمة
+            const MyArray = Object.values(res.data.data)
+            console.log('Fetched Data:', MyArray)
 
-            // إنشاء كائن جديد لتجميع البيانات حسب genre
             const newGroupedData = MyArray.reduce((acc, item) => {
-              const genreName = item.genre.genre // اسم النوع
+              const genreName = item.genre.genre
               if (!acc[genreName]) {
-                acc[genreName] = [] // إذا لم يكن النوع موجودًا، قم بإنشائه
+                acc[genreName] = []
               }
-              acc[genreName].push(item) // أضف العنصر إلى النوع المناسب
+              acc[genreName].push(item)
               return acc
             }, {})
 
-            console.log('New Grouped Data:', newGroupedData) // طباعة البيانات المجموعة الجديدة
+            console.log('New Grouped Data:', newGroupedData)
 
-            // دمج القيم الجديدة مع القيم القديمة
             setGenreData((prevData) => {
-              console.log('Previous GenreData:', prevData) // طباعة البيانات القديمة قبل التحديث
+              console.log('Previous GenreData:', prevData)
               const mergedData = { ...prevData }
 
-              // دمج الأنواع الجديدة
               Object.keys(newGroupedData).forEach((genre) => {
                 if (!mergedData[genre]) {
-                  mergedData[genre] = [] // إذا لم يكن النوع موجودًا، قم بإنشائه
+                  mergedData[genre] = []
                 }
-                // دمج العناصر الجديدة مع العناصر القديمة مع إزالة التكرارات
+
                 const existingIds = new Set(
                   mergedData[genre].map((item) => item.id)
                 )
@@ -266,7 +258,7 @@ export default function SwiperFillter({ Type, Needs }) {
                 mergedData[genre] = [...mergedData[genre], ...uniqueItems]
               })
 
-              console.log('Updated GenreData:', mergedData) // طباعة البيانات المدمجة الجديدة
+              console.log('Updated GenreData:', mergedData)
               return mergedData
             })
           } else {
@@ -313,7 +305,6 @@ export default function SwiperFillter({ Type, Needs }) {
   }
   const WhatINeed = () => {
     if (Needs?.genre) {
-      // Check for genre and call the appropriate function
       if (Type === 'Movies') {
         getMoviesGenere(Needs.genre)
       } else if (Type === 'Series') {

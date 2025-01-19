@@ -1,4 +1,3 @@
-// File: SettingsPage.jsx
 import {
   Box,
   Drawer,
@@ -19,7 +18,7 @@ export default function SettingsPage() {
   const [cookies] = useCookies(['authToken', 'username', 'UserId'])
   const [profileData, setProfileData] = useState(null)
   const [subscriptionData, setSubscriptionData] = useState([])
-  const [activeComponent, setActiveComponent] = useState('userSettings') // 'userSettings' or 'subscriptionSettings'
+  const [activeComponent, setActiveComponent] = useState('userSettings')
 
   const fetchData = async () => {
     if (cookies) {
@@ -46,7 +45,6 @@ export default function SettingsPage() {
 
   return (
     <Box display="flex">
-      {/* Side Menu */}
       <Drawer
         variant="permanent"
         sx={{ width: 240, '& .MuiDrawer-paper': { width: 240 } }}
@@ -64,7 +62,6 @@ export default function SettingsPage() {
         </List>
       </Drawer>
 
-      {/* Main Content */}
       <Box flex={1} p={2}>
         <Navbar3 />
         <AnimatePresence>

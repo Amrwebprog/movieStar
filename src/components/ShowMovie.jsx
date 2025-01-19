@@ -25,7 +25,7 @@ export default function ShowMovie() {
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
-            bgcolor: 'rgba(0, 0, 0, 0.8)', // خلفية شفافة داكنة
+            bgcolor: 'rgba(0, 0, 0, 0.8)',
             zIndex: '1',
           }}
           onClick={() => {
@@ -49,9 +49,9 @@ export default function ShowMovie() {
               padding: '20px',
               flexDirection: 'column',
               gap: '20px',
-              bgcolor: '#121212', // خلفية الورقة داكنة
+              bgcolor: '#121212',
               borderRadius: '16px',
-              boxShadow: '0px 10px 30px rgba(0, 0, 0, 0.5)', // تأثير الظل
+              boxShadow: '0px 10px 30px rgba(0, 0, 0, 0.5)',
             }}
           >
             <Close
@@ -97,10 +97,9 @@ export default function ShowMovie() {
     }
     setBoxMovies(MovieBox)
   }
-  // Refs for animations
+
   const containerRef = useRef(null)
 
-  // Fetch movie data
   useEffect(() => {
     axios
       .get(`http://Movie-Star.test/api/${ProductType}/${ProductId}`, {
@@ -115,7 +114,6 @@ export default function ShowMovie() {
       })
   }, [ProductType, ProductId, cookies.authToken])
 
-  // Animations on data load
   useEffect(() => {
     if (containerRef.current && movieData) {
       const timeline = gsap.timeline({
@@ -124,14 +122,14 @@ export default function ShowMovie() {
       timeline.from(containerRef.current.children, {
         opacity: 0,
         y: 50,
-        stagger: 1, // Stagger animation for child elements
+        stagger: 1,
       })
     }
-  }, [movieData]) // Trigger animation when movieData is loaded
+  }, [movieData])
 
   if (!movieData) return <Typography>Loading...</Typography>
 
-  const defaultImage = 'https://via.placeholder.com/300' // Default image if no posterUrl
+  const defaultImage = 'https://via.placeholder.com/300'
 
   return (
     <>
@@ -150,10 +148,9 @@ export default function ShowMovie() {
               elevation={3}
               sx={{ p: 2, display: 'flex', gap: 2, alignItems: 'flex-start' }}
             >
-              {/* Movie Poster */}
               <Box
                 component="img"
-                src={movieData.image || defaultImage} // Use default image if posterUrl is not available
+                src={movieData.image || defaultImage}
                 alt={movieData.name || 'No title available'}
                 sx={{
                   width: '50%',

@@ -106,7 +106,6 @@ export default function BodySwiper({ Type, Needs }) {
   const theme = useTheme()
   const MySwiper = () => {
     if (!Needs || !data) {
-      // تأكد من وجود Needs و data
       return <div>لا توجد بيانات لعرضها</div>
     }
     const HandleClick = (Type, ID) => {
@@ -430,12 +429,11 @@ export default function BodySwiper({ Type, Needs }) {
 
       default:
         if (Needs.genre) {
-          const genreName = Needs.genre // الحصول على اسم النوع من Needs
-          console.log('GenreName:', genreName) // تتبع اسم النوع
+          const genreName = Needs.genre
+          console.log('GenreName:', genreName)
 
-          // التحقق من أن GenreData يحتوي على النوع المطلوب
           if (GenreData[genreName]) {
-            console.log('Data for Genre:', genreName, GenreData[genreName]) // تتبع البيانات لهذا النوع
+            console.log('Data for Genre:', genreName, GenreData[genreName])
 
             return (
               <>

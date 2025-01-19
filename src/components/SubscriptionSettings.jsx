@@ -1,4 +1,3 @@
-// File: SubscriptionSettings.jsx
 import {
   Box,
   Button,
@@ -14,23 +13,20 @@ import React, { useState } from 'react'
 export default function SubscriptionSettings({ subscriptionData }) {
   const [subscriptions, setSubscriptions] = useState(subscriptionData)
 
-  // Pagination state
-  const [page, setPage] = useState(0) // Current page
-  const [rowsPerPage, setRowsPerPage] = useState(5) // Rows per page
+  const [page, setPage] = useState(0)
+  const [rowsPerPage, setRowsPerPage] = useState(5)
 
   const handleDelete = (index) => {
     console.log('Edit Subscription:', subscriptions[index])
-    // Add Edit Logic
   }
 
-  // Handle pagination changes
   const handleChangePage = (event, newPage) => {
     setPage(newPage)
   }
 
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(parseInt(event.target.value, 10))
-    setPage(0) // Reset to the first page
+    setPage(0)
   }
 
   return (
@@ -63,7 +59,7 @@ export default function SubscriptionSettings({ subscriptionData }) {
             ))}
         </TableBody>
       </Table>
-      {/* Pagination controls */}
+
       <TablePagination
         component="div"
         count={subscriptions.length}

@@ -12,15 +12,15 @@ export default function TotalInCome() {
     useContext(GlobalContext)
   const [cookies] = useCookies(['authToken'])
   const [usernames, setUsernames] = useState({})
-  const [subscriptions, setSubscriptions] = useState({}) // لتخزين تفاصيل الاشتراكات
+  const [subscriptions, setSubscriptions] = useState({})
 
   const columns = [
-    { field: 'user_id', headerName: 'User ID' },
-    { field: 'username', headerName: 'Username', width: 150 },
-    { field: 'subscription_id', headerName: 'Sub ID' },
-    { field: 'subscription_name', headerName: 'Subscription Name', width: 200 },
-    { field: 'price', headerName: 'Price' },
-    { field: 'expiry_date', headerName: 'Expiry Date' },
+    { field: 'user_id', headerName: 'User ID', flex: 1 },
+    { field: 'username', headerName: 'Username', flex: 1 },
+    { field: 'subscription_id', headerName: 'Sub ID', flex: 1 },
+    { field: 'subscription_name', headerName: 'Subscription Name', flex: 2 },
+    { field: 'price', headerName: 'Price', flex: 1 },
+    { field: 'expiry_date', headerName: 'Expiry Date', flex: 1 },
   ]
 
   useEffect(() => {
@@ -58,7 +58,7 @@ export default function TotalInCome() {
         setSupscriptionUser(allUserSupp.length)
         setAllSupscriptions(allData)
 
-        // Fetch usernames
+
         const uniqueUserIds = allUserSupp.map((user) => user.user_id)
         const usernameRequests = uniqueUserIds.map((user_id) =>
           axios
@@ -78,7 +78,7 @@ export default function TotalInCome() {
         }, {})
         setUsernames(usernameMap)
 
-        // Fetch subscription details (name and price)
+
         const uniqueSubscriptionIds = [
           ...new Set(allData.map((sub) => sub.subscription_id)),
         ]
@@ -120,10 +120,9 @@ export default function TotalInCome() {
       <Paper
         elevation={24}
         sx={{
-          padding: '40px',
+          padding: '20px',
           marginBottom: '20px',
           width: '100%',
-
           overflow: 'hidden',
         }}
       >
@@ -146,44 +145,44 @@ export default function TotalInCome() {
             }}
           />
         </Box>
-        {
-          <div
-            style={{
-              height: 374,
-              width: '100%',
-
-              marginTop: '20px',
+        <Box
+          sx={{
+            height: 400,
+            width: '100%',
+            marginTop: '20px',
+            overflowX: 'auto',
+          }}
+        >
+          <DataGrid
+            rows={allSupscriptions.map((row, index) => ({
+              ...row,
+              id: index + 1,
+              username: usernames[row.user_id] || 'Loading...',
+              subscription_name:
+                subscriptions[row.subscription_id]?.name || 'Loading...',
+              price: subscriptions[row.subscription_id]?.price || 'Loading...',
+            }))}
+            columns={columns}
+            pageSizeOptions={[5, 10, 20]}
+            initialState={{
+              pagination: {
+                paginationModel: { pageSize: 5, page: 0 },
+              },
             }}
-          >
-            <DataGrid
-              rows={allSupscriptions.map((row, index) => ({
-                ...row,
-                id: index + 1,
-                username: usernames[row.user_id] || 'Loading...',
-                subscription_name:
-                  subscriptions[row.subscription_id]?.name || 'Loading...',
-                price:
-                  subscriptions[row.subscription_id]?.price || 'Loading...',
-              }))}
-              columns={columns}
-              pageSizeOptions={[5, 10, 20]}
-              initialState={{
-                pagination: {
-                  paginationModel: { pageSize: 5, page: 0 },
-                },
-              }}
-              disableColumnFilter={false}
-              disableColumnMenu={false}
-              sx={{
-                border: 0,
-                '& .MuiDataGrid-columnHeaders': {
-                  backgroundColor: '#f5f5f5',
-                  fontWeight: 'bold',
-                },
-              }}
-            />
-          </div>
-        }
+            disableColumnFilter={false}
+            disableColumnMenu={false}
+            sx={{
+              border: 0,
+              width: '100%',
+              overflow: 'auto',
+
+              '& .MuiDataGrid-columnHeaders': {
+                backgroundColor: '#f5f5f5',
+                fontWeight: 'bold',
+              },
+            }}
+          />
+        </Box>
       </Paper>
     </Box>
   )

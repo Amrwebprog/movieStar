@@ -12,7 +12,6 @@ import HeroSection2 from '../../components/HeroSection2'
 import MovieCard from '../../components/MovieCard'
 import Navbar3 from '../../components/NavBar3'
 
-// Register ScrollTrigger plugin with GSAP
 gsap.registerPlugin(ScrollTrigger)
 
 export default function MoviesPage() {
@@ -22,7 +21,6 @@ export default function MoviesPage() {
     useContext(GlobalContext)
   const Navigate = useNavigate()
 
-  // Refs for animations
   const pageContainerRef = useRef(null)
   const movieCardRef = useRef(null)
 
@@ -40,12 +38,9 @@ export default function MoviesPage() {
       })
   }
 
-  // Function to initialize animations
   const initializeAnimations = () => {
-    // Clear previous ScrollTrigger instances
     ScrollTrigger.getAll().forEach((trigger) => trigger.kill())
 
-    // Animate page container sections on scroll
     if (pageContainerRef.current) {
       gsap.fromTo(
         pageContainerRef.current.children,
@@ -64,7 +59,6 @@ export default function MoviesPage() {
       )
     }
 
-    // Animate movie cards on scroll
     if (movieCardRef.current) {
       gsap.fromTo(
         movieCardRef.current.children,
@@ -84,12 +78,10 @@ export default function MoviesPage() {
     }
   }
 
-  // Fetch data and initialize animations
   useEffect(() => {
     GetMovieGenere()
     initializeAnimations()
 
-    // Cleanup ScrollTrigger instances on unmount
     return () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill())
     }

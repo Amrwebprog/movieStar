@@ -270,7 +270,6 @@ const MovieCard = memo((props) => {
   )
 })
 
-// إضافة اسم عرض للمكون
 MovieCard.displayName = 'MovieCard'
 
 export default MovieCard
